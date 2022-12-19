@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 from .forms import LoginForm
 
@@ -29,5 +30,15 @@ def user_login(request):
         template_name='account/login.xhtml',
         context={
             'form': form
+        }
+    )
+
+@login_required
+def dashboard(request):
+    return render(
+        request=request,
+        template_name='account/dashboard.xhtml',
+        context={
+            'section': 'dashboard'
         }
     )
