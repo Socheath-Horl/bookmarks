@@ -15,6 +15,7 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,6 +30,11 @@ SECRET_KEY = 'django-insecure-n2nhscfjh4!p0ov5+4kmwhy7u+7*jwrcs$m)=$u_44)x08$&r#
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type('application/javascript', '.js', True)
+    mimetypes.add_type('text/css', '.css', True)
 
 ALLOWED_HOSTS = [
     'mysite.com',
